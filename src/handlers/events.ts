@@ -2,7 +2,7 @@ import { App } from '@slack/bolt';
 import { state } from '../state';
 import { createHomeBlocks } from '../views/home';
 
-// Переиспользуемая функция публикации/обновления Home Tab
+// Reusable function to publish/update the Home Tab
 export async function updateHomeView(app: App, userId: string): Promise<void> {
   await app.client.views.publish({
     user_id: userId,
@@ -14,7 +14,7 @@ export async function updateHomeView(app: App, userId: string): Promise<void> {
 }
 
 export function registerEventHandlers(app: App): void {
-  // Срабатывает, когда пользователь открывает вкладку Home
+  // Fires when the user opens the Home tab
   app.event('app_home_opened', async ({ event, logger }) => {
     try {
       await updateHomeView(app, event.user);

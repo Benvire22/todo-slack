@@ -1,7 +1,7 @@
 import type { KnownBlock } from '@slack/web-api';
 import { State, Task } from '../state';
 
-// Генерирует кнопки-действия для каждой задачи в зависимости от её колонки
+// Returns action buttons for a task depending on its column
 function taskButtons(task: Task, column: 'todo' | 'in_progress' | 'done'): KnownBlock {
   const buttons: KnownBlock = {
     type: 'actions',
@@ -59,7 +59,7 @@ function taskButtons(task: Task, column: 'todo' | 'in_progress' | 'done'): Known
   return buttons;
 }
 
-// Рендерит список задач одной колонки
+// Renders all tasks in a single column
 function renderColumn(
   title: string,
   tasks: Task[],
@@ -91,7 +91,7 @@ function renderColumn(
   return blocks;
 }
 
-// Главная функция — возвращает полный массив блоков для Home Tab
+// Main function — returns the full block array for the Home Tab
 export function createHomeBlocks(state: State): KnownBlock[] {
   return [
     ...renderColumn('📋  ToDo', state.todo, 'todo'),

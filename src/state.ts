@@ -11,7 +11,7 @@ export interface State {
   done: Task[];
 }
 
-// Единственный источник правды — хранится в памяти процесса
+// Single source of truth — stored in process memory
 export const state: State = {
   todo: [
     { id: '1', description: 'Настроить Slack App на portal.slack.com' },
